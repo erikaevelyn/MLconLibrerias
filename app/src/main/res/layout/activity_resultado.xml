@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ResultadoActivity">
+
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <TextView
+                android:id="@+id/labelResultado"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:text="Resultado encontrado sobre:"
+                android:textColor="#000"
+                android:textSize="30dp"
+                android:textStyle="bold"></TextView>
+
+            <TextView
+                android:id="@+id/resultado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/labelResultado"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Palabra ingresada"
+                android:textColor="#000"
+                android:textSize="30dp"/>
+
+
+            <ImageView
+                android:id="@+id/foto"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/modular"
+                android:layout_below="@+id/resultado"
+                />
+
+
+            <TextView
+                android:id="@+id/cantidadFotos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/foto"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="#111111"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:padding="5dp"
+                android:text="10 Fotos"
+                android:textColor="#fff"></TextView>
+
+            <TextView
+                android:id="@+id/vendidos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/foto"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="8 vendidos"></TextView>
+
+            <TextView
+                android:id="@+id/titulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/vendidos"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:text="Modular que se hace cama"
+                android:textColor="#000"
+                android:textSize="30dp"
+                android:textStyle="bold"></TextView>
+
+
+            <TextView
+                android:id="@+id/valoracion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/titulo"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Valoracion:"
+                android:textSize="20dp"></TextView>
+
+
+            <TextView
+                android:id="@+id/nro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/valoracion"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/valoracion"
+                android:text="5"
+                android:textSize="20dp"></TextView>
+
+            <TextView
+                android:id="@+id/estrellas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/nro"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/nro"
+                android:text="estrellas"
+                android:textSize="20dp"></TextView>
+
+            <TextView
+                android:id="@+id/cantOpiniones"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/valoracion"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Cantidad de Opiniones:"
+                android:textSize="20dp"></TextView>
+
+
+            <TextView
+                android:id="@+id/nroOpiniones"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/cantOpiniones"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/cantOpiniones"
+                android:text="5"
+                android:textSize="20dp"></TextView>
+
+            <TextView
+                android:id="@+id/signoPesos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cantOpiniones"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="$"
+                android:textColor="#000"
+                android:textSize="30dp"
+                android:textStyle="bold"></TextView>
+
+            <TextView
+                android:id="@+id/precio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/signoPesos"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/signoPesos"
+                android:text="5.000"
+                android:textColor="#000"
+                android:textSize="30dp"
+                android:textStyle="bold"></TextView>
+
+            <TextView
+                android:id="@+id/pagaEnCuotas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/precio"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Paga en"
+                android:textSize="20dp"></TextView>
+
+
+            <TextView
+                android:id="@+id/nroCuotas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/pagaEnCuotas"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/pagaEnCuotas"
+                android:text="6"
+                android:textSize="20dp"></TextView>
+
+            <TextView
+                android:id="@+id/cutoas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/nroCuotas"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/nroCuotas"
+                android:text="cuotas sin interes"
+                android:textSize="20dp"></TextView>
+
+            <TextView
+                android:id="@+id/envio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/pagaEnCuotas"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Envio por $"
+                android:textSize="20dp"></TextView>
+
+
+            <TextView
+                android:id="@+id/precioEnvio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/envio"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/envio"
+                android:text="179.50"
+                android:textSize="20dp"></TextView>
+
+
+
+        </RelativeLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.constraint.ConstraintLayout>
