@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+
+import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -17,11 +20,18 @@ public class MainActivity extends AppCompatActivity {
    (R.id.IngresarBusqueda) EditText elementoBuscado;
     //se comunica la parte logica con la grafica (se guarda en esta varibale)
 
+    ImageView imagenBanner;
+
+    final String URL ="https://static.websguru.com.ar/var/m_4/48/484/15418/1751312-banner_mercado_libre.jpg";
+    //URL de imagen
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        imagenBanner = (ImageView)findViewById(R.id.banner);
+        Picasso.with(getApplicationContext()).load(URL).placeholder(R.drawable.progress_animation).into(imagenBanner);
     }
 
     @OnClick(R.id.miBoton)
