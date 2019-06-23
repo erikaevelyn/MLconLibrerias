@@ -22,40 +22,16 @@
                 />
 
 
-            <TextView
-                android:id="@+id/labelResultado"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_below="@+id/banner"
-                android:text="Resultado encontrado sobre:"
-                android:textColor="#000"
-                android:textSize="30dp"
-                android:textStyle="bold"></TextView>
-
-            <TextView
-                android:id="@+id/resultado"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/labelResultado"
-                android:layout_marginLeft="10dp"
-                android:layout_marginBottom="10dp"
-                android:text="Palabra ingresada"
-                android:textColor="#000"
-                android:textSize="30dp"/>
 
 
             <ImageView
                 android:id="@+id/foto"
                 android:layout_width="match_parent"
+                android:layout_below="@+id/banner"
                 android:layout_height="800dp"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
                 android:src="@drawable/modular"
-                android:layout_below="@+id/resultado"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 />
@@ -75,33 +51,70 @@
                 android:textColor="#fff"></TextView>
 
             <TextView
-                android:id="@+id/vendidos"
-                android:layout_width="match_parent"
+                android:id="@+id/cantVendidos"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/foto"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:text="8 vendidos"></TextView>
+                android:text="Cargando..."></TextView>
 
             <TextView
-                android:id="@+id/titulo"
+                android:id="@+id/vendidos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/cantVendidos"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/cantVendidos"
+                android:text="vendidos"></TextView>
+
+
+
+            <TextView
+                android:id="@+id/resultado"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/vendidos"
+                android:layout_below="@+id/cantVendidos"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="10dp"
-                android:text="Modular que se hace cama"
+                android:layout_marginBottom="10dp"
+                android:text="Cargando producto buscado..."
                 android:textColor="#000"
                 android:textSize="30dp"
                 android:textStyle="bold"></TextView>
+
+
+
+            <TextView
+                android:id="@+id/labelCondicion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/resultado"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Condicion del articulo: "
+                android:textSize="20dp"></TextView>
+
+            <TextView
+            android:id="@+id/condicion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/labelCondicion"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/labelCondicion"
+            android:text="Cargando..."
+            android:textSize="20dp"></TextView>
+
 
 
             <TextView
                 android:id="@+id/valoracion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/titulo"
+                android:layout_below="@+id/condicion"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:text="Valoracion:"

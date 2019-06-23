@@ -6,6 +6,7 @@ import java.util.List;
 
 public class Resultado {
 
+    @SerializedName("results")
     private List<Producto> resultados;
 
     public List<Producto> getResultados() {

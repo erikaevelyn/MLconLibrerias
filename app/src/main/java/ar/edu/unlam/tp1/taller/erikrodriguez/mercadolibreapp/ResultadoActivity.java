@@ -22,6 +22,12 @@ public class ResultadoActivity extends AppCompatActivity {
     @BindView(R.id.resultado)
     TextView datoRecibido;
 
+    @BindView(R.id.condicion)
+    TextView condicion;
+
+    @BindView(R.id.cantVendidos)
+    TextView cantidadVendidos;
+
     ImageView imagenBanner;
 
     final String URL ="https://static.websguru.com.ar/var/m_4/48/484/15418/1751312-banner_mercado_libre.jpg";
@@ -46,6 +52,8 @@ public class ResultadoActivity extends AppCompatActivity {
                 if(response.isSuccessful()) {
                     Resultado resultados = response.body();
                     datoRecibido.setText(resultados.getResultados().get(0).getTitle());
+                    condicion.setText(resultados.getResultados().get(0).getCondicion());
+                    cantidadVendidos.setText(resultados.getResultados().get(0).getVendidos());
                 }else{
                     Log.d("Error", String.valueOf(response.code()) + response.message());
                 }
