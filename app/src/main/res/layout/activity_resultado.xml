@@ -57,7 +57,8 @@
                 android:layout_below="@+id/foto"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:text="Cargando..."></TextView>
+                android:text="Cargando..."
+                android:textSize="15dp"></TextView>
 
             <TextView
                 android:id="@+id/vendidos"
@@ -67,7 +68,8 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_toRightOf="@+id/cantVendidos"
-                android:text="vendidos"></TextView>
+                android:text="vendidos"
+                android:textSize="15dp"></TextView>
 
 
 
@@ -185,7 +187,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_toRightOf="@+id/signoPesos"
-                android:text="5.000"
+                android:text="Cargando..."
                 android:textColor="#000"
                 android:textSize="30dp"
                 android:textStyle="bold"></TextView>
