@@ -24,7 +24,7 @@ public class Producto {
     private String condicion;
 
     @SerializedName("pictures")
-    private List<Pictures> imagenes;
+    private List<Imagen> imagenes;
 
     public String getId() {
         return id;
@@ -69,7 +69,7 @@ public class Producto {
         return disponibles;
     }
 
-    public List<Pictures> getImagenes() {
+    public List<Imagen> getImagenes() {
         return imagenes;
     }
 
@@ -77,7 +77,7 @@ public class Producto {
         this.disponibles = disponibles;
     }
 
-    public void setImagenes(List<Pictures> imagenes) {
+    public void setImagenes(List<Imagen> imagenes) {
         this.imagenes = imagenes;
     }
 }

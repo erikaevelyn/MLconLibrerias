@@ -31,18 +31,24 @@ public class ResultadoActivity extends AppCompatActivity {
     @BindView(R.id.precio)
     TextView precio;
 
+    @BindView(R.id.banner)
     ImageView imagenBanner;
 
-    final String URL ="https://static.websguru.com.ar/var/m_4/48/484/15418/1751312-banner_mercado_libre.jpg";
-    //URL de imagen
+    final String URLbanner ="https://static.websguru.com.ar/var/m_4/48/484/15418/1751312-banner_mercado_libre.jpg";
+
+    String URLimagen1;
+
+    @BindView(R.id.foto)
+    ImageView imagen1;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resultado);
         ButterKnife.bind(this);
-        imagenBanner = (ImageView) findViewById(R.id.banner);
-        Picasso.with(getApplicationContext()).load(URL).placeholder(R.drawable.progress_animation).into(imagenBanner);
+        Picasso.with(getApplicationContext()).load(URLbanner).placeholder(R.drawable.progress_animation).into(imagenBanner);
         mostrarResultado();
 
     }
@@ -54,10 +60,13 @@ public class ResultadoActivity extends AppCompatActivity {
 
                 if(response.isSuccessful()) {
                     Resultado resultados = response.body();
+                    URLimagen1 = resultados.getResultados().get(0).getImagenes().get(0).getUrl();
+                    Picasso.with(getApplicationContext()).load(URLimagen1).placeholder(R.drawable.progress_animation).into(imagen1);
                     datoRecibido.setText(resultados.getResultados().get(0).getTitle());
                     condicion.setText(resultados.getResultados().get(0).getCondicion());
                     cantidadVendidos.setText(resultados.getResultados().get(0).getVendidos().toString());
                     precio.setText(resultados.getResultados().get(0).getPrecio().toString());
+
                 }else{
                     Log.d("Error", String.valueOf(response.code()) + response.message());
                 }

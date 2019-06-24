@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
    (R.id.IngresarBusqueda) EditText elementoBuscado;
     //se comunica la parte logica con la grafica (se guarda en esta varibale)
 
+    @BindView(R.id.banner)
     ImageView imagenBanner;
 
     final String URL ="https://static.websguru.com.ar/var/m_4/48/484/15418/1751312-banner_mercado_libre.jpg";
@@ -30,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        imagenBanner = (ImageView)findViewById(R.id.banner);
         Picasso.with(getApplicationContext()).load(URL).placeholder(R.drawable.progress_animation).into(imagenBanner);
     }
 
