@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.miBoton)
     public void Buscar(View v) {
-        Intent i = new Intent(this, ResultadoActivity.class);
+        Intent i = new Intent(this, ListadoActivity.class);
         //creo un Intent pasando por parametro la clase actual (this) uy la clase a la que quiero ir
 
         i.putExtra("datoBuscado", elementoBuscado.getText().toString());

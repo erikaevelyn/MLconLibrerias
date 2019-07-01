@@ -10,6 +10,7 @@ import com.squareup.picasso.Picasso;
 
 import ar.edu.unlam.tp1.taller.erikrodriguez.mercadolibreapp.API.API;
 import ar.edu.unlam.tp1.taller.erikrodriguez.mercadolibreapp.API.IMercadoLibre;
+import ar.edu.unlam.tp1.taller.erikrodriguez.mercadolibreapp.Modelos.Producto;
 import ar.edu.unlam.tp1.taller.erikrodriguez.mercadolibreapp.Modelos.Resultado;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,7 +21,7 @@ import retrofit2.Response;
 public class ResultadoActivity extends AppCompatActivity {
 
     @BindView(R.id.resultado)
-    TextView datoRecibido;
+    TextView titulo;
 
     @BindView(R.id.condicion)
     TextView condicion;
@@ -52,29 +53,32 @@ public class ResultadoActivity extends AppCompatActivity {
         mostrarResultado();
 
     }
-        public void mostrarResultado(){
-        String dato = getIntent().getStringExtra("datoBuscado");
-        API.search(dato, new Callback<Resultado>() {
+
+
+    public void mostrarResultado(){
+        String idProductoElegido = getIntent().getStringExtra("idProducto");
+        API.getArticle(idProductoElegido, new Callback<Producto>() {
             @Override
-            public void onResponse(Call<Resultado> call, Response<Resultado> response) {
+            public void onResponse(Call<Producto> call, Response<Producto> response) {
 
                 if(response.isSuccessful()) {
-                    Resultado resultados = response.body();
-                    URLimagen1 = resultados.getResultados().get(0).getImagenes().get(0).getUrl();
+                    Producto producto = response.body();
+                    URLimagen1 = producto.getImagenes().get(0).getUrl();
                     Picasso.with(getApplicationContext()).load(URLimagen1).placeholder(R.drawable.progress_animation).into(imagen1);
-                    datoRecibido.setText(resultados.getResultados().get(0).getTitle());
-                    condicion.setText(resultados.getResultados().get(0).getCondicion());
-                    cantidadVendidos.setText(resultados.getResultados().get(0).getVendidos().toString());
-                    precio.setText(resultados.getResultados().get(0).getPrecio().toString());
+                    titulo.setText(producto.getTitle());
+                    condicion.setText(producto.getCondicion());
+                    cantidadVendidos.setText(producto.getVendidos());
+                    precio.setText(producto.getPrecio().toString());
 
                 }else{
                     Log.d("Error", String.valueOf(response.code()) + response.message());
                 }
 
-        }
+            }
 
-            @Override
-            public void onFailure(Call<Resultado> call, Throwable t) {
+
+                    @Override
+            public void onFailure(Call<Producto> call, Throwable t) {
 
                 Log.e("Error", t.getMessage());
 
