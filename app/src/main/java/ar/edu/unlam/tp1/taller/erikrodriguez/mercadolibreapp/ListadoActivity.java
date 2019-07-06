@@ -28,10 +28,6 @@ public class ListadoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_listado);
         ButterKnife.bind(this);
         enviarId();
-        Intent i = new Intent(this, ResultadoActivity.class);
-        i.putExtra("idProducto", idPrimerProducto.getText().toString());
-        startActivity(i);
-
     }
 
     public void enviarId() {
@@ -45,6 +41,9 @@ public class ListadoActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     Resultado resultados = response.body();
                     idPrimerProducto.setText(resultados.getResultados().get(0).getId());
+                    Intent i = new Intent(ListadoActivity.this, ResultadoActivity.class);
+                    i.putExtra("idProducto", idPrimerProducto.getText().toString());
+                    startActivity(i);
 
                 } else {
                     Log.d("Error", String.valueOf(response.code()) + response.message());
