@@ -67,7 +67,7 @@ public class ResultadoActivity extends AppCompatActivity {
                     Picasso.with(getApplicationContext()).load(URLimagen1).placeholder(R.drawable.progress_animation).into(imagen1);
                     titulo.setText(producto.getTitle());
                     condicion.setText(producto.getCondicion());
-                    cantidadVendidos.setText(producto.getVendidos());
+                    cantidadVendidos.setText(producto.getVendidos().toString());
                     precio.setText(producto.getPrecio().toString());
 
                 }else{
