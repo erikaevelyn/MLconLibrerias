@@ -7,9 +7,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import ar.edu.unlam.tp1.taller.erikrodriguez.mercadolibreapp.Modelos.Producto;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -25,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
 
     final String URL ="https://static.websguru.com.ar/var/m_4/48/484/15418/1751312-banner_mercado_libre.jpg";
     //URL de imagen
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +56,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
         //Le damos inicio a la nueva activity, pasando por parametro el intent.
     }
-
-
-
 
 
 }
