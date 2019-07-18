@@ -16,13 +16,34 @@
             android:layout_height="200dp"
             />
 
+        <TextView
+            android:id="@+id/loQueSeBusco"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_below="@+id/banner"
+            android:paddingTop="10dp"
+            android:paddingLeft="10dp"
+            android:textSize="35sp"
+            android:ems="15"
+            android:hint="Cargando..." />
+
 
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/banner"
+            android:layout_below="@+id/loQueSeBusco"
+            android:layout_marginTop="10dp"
+            />
+
+        <ImageView
+            android:id="@+id/errorBusqueda"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/loQueSeBusco"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             />
 
 

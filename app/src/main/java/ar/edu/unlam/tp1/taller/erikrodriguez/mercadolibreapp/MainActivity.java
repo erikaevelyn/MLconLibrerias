@@ -30,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.banner)
     ImageView imagenBanner;
 
+    @BindView(R.id.footer)
+    ImageView footer;
+
     final String URL ="https://static.websguru.com.ar/var/m_4/48/484/15418/1751312-banner_mercado_libre.jpg";
     //URL de imagen
 
@@ -41,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         Picasso.with(getApplicationContext()).load(URL).placeholder(R.drawable.progress_animation).into(imagenBanner);
+        Picasso.with(getApplicationContext()).load(R.drawable.footer).placeholder(R.drawable.progress_animation).into(footer);
     }
 
     @OnClick(R.id.miBoton)

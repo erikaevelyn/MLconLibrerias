@@ -58,16 +58,18 @@ public class ProductosAdapter extends RecyclerView.Adapter<ProductosAdapter.View
 
         viewHolder.titulo.setText(productoAMostrar.getTitle());
 
+
         if(productoAMostrar.getEnvio().isEnvioGratis() == true) {
             viewHolder.envioGratis.setText("Envio gratis");
         }else{
-            viewHolder.envioGratis.setVisibility(View.GONE);;
+            viewHolder.envioGratis.setVisibility(View.GONE);
         }
 
         viewHolder.precio.setText("$ " + productoAMostrar.getPrecio());
 
         URLimagenPortada = productoAMostrar.getUrlImagenPortada();
-        Picasso.with(context.getApplicationContext()).load(URLimagenPortada).placeholder(R.drawable.progress_animation).into(viewHolder.imagenDePortada);
+        Picasso.with(context.getApplicationContext()).load(URLimagenPortada).placeholder(R.drawable.progress_animation)
+                .into(viewHolder.imagenDePortada);
 
 
 
@@ -116,8 +118,8 @@ public class ProductosAdapter extends RecyclerView.Adapter<ProductosAdapter.View
         @BindView(R.id.imagenDePortada)
         ImageView imagenDePortada;
 
-
         TextView idProducto;
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

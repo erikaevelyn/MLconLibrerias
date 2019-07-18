@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -39,6 +40,13 @@ public class ListadoActivity extends AppCompatActivity {
     @BindView(R.id.banner)
     ImageView imagenBanner;
 
+    @BindView(R.id.loQueSeBusco)
+    TextView loQueSeBusco;
+
+    @BindView(R.id.errorBusqueda)
+    ImageView errorBusqueda;
+
+
     final String URL ="https://static.websguru.com.ar/var/m_4/48/484/15418/1751312-banner_mercado_libre.jpg";
 
     @Override
@@ -52,6 +60,7 @@ public class ListadoActivity extends AppCompatActivity {
 
     public void listarProductos() {
         String dato = getIntent().getStringExtra("datoBuscado");
+        loQueSeBusco.setText("Resultados de la busqueda: " + dato);
 
         API.search(dato, new Callback<Resultado>() {
             @Override
@@ -59,7 +68,17 @@ public class ListadoActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     Resultado resultados = response.body();
                     productos = resultados.getResultados();
-                    configurarRecyclerView(productos);
+
+                    if(productos.size() == 0){
+                        errorBusqueda.setVisibility(View.VISIBLE);
+                    }else {
+                        errorBusqueda.setVisibility(View.GONE);
+                        configurarRecyclerView(productos);
+                    }
+
+                    Picasso.with(getApplicationContext()).load(R.drawable.errorbusqueda).placeholder(R.drawable.progress_animation).into(errorBusqueda);
+
+
                 } else {
                     Log.d("Error", String.valueOf(response.code()) + response.message());
                 }
