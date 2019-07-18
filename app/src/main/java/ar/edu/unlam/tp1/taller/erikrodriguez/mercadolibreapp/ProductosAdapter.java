@@ -9,7 +9,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import ar.edu.unlam.tp1.taller.erikrodriguez.mercadolibreapp.R;
 import ar.edu.unlam.tp1.taller.erikrodriguez.mercadolibreapp.Modelos.Producto;
@@ -29,11 +32,15 @@ public class ProductosAdapter extends RecyclerView.Adapter<ProductosAdapter.View
 
     TextView idProductoSeleccionado;
 
+    String URLimagenPortada;
+
+
 
 
     public ProductosAdapter(List<Producto> productos) {
         this.productos = productos;
     }
+
 
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -43,6 +50,9 @@ public class ProductosAdapter extends RecyclerView.Adapter<ProductosAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int position) {
+
+        final Context context;
+        context = viewHolder.itemView.getContext();
 
         Producto productoAMostrar = this.productos.get(position);
 
@@ -55,6 +65,12 @@ public class ProductosAdapter extends RecyclerView.Adapter<ProductosAdapter.View
         }
 
         viewHolder.precio.setText("$ " + productoAMostrar.getPrecio());
+
+        URLimagenPortada = productoAMostrar.getUrlImagenPortada();
+        Picasso.with(context.getApplicationContext()).load(URLimagenPortada).placeholder(R.drawable.progress_animation).into(viewHolder.imagenDePortada);
+
+
+
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,9 +81,8 @@ public class ProductosAdapter extends RecyclerView.Adapter<ProductosAdapter.View
 
         if(row_index==position){
 
-            final Context context;
-            context = viewHolder.itemView.getContext();
-            viewHolder.itemView.setBackgroundColor(Color.parseColor("#FFFF00"));
+
+            viewHolder.itemView.setBackgroundColor(Color.parseColor("#fbe404"));
 
             String idString = String.valueOf(productoAMostrar.getId());
 
@@ -97,6 +112,10 @@ public class ProductosAdapter extends RecyclerView.Adapter<ProductosAdapter.View
 
         @BindView(R.id.envioGratis)
         TextView envioGratis;
+
+        @BindView(R.id.imagenDePortada)
+        ImageView imagenDePortada;
+
 
         TextView idProducto;
 
