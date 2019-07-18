@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
@@ -33,12 +36,17 @@ public class ListadoActivity extends AppCompatActivity {
 
     List<Producto> productos = new ArrayList<>();
 
+    @BindView(R.id.banner)
+    ImageView imagenBanner;
+
+    final String URL ="https://static.websguru.com.ar/var/m_4/48/484/15418/1751312-banner_mercado_libre.jpg";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listado);
         ButterKnife.bind(this);
-      /*  enviarId();*/
+        Picasso.with(getApplicationContext()).load(URL).placeholder(R.drawable.progress_animation).into(imagenBanner);
         listarProductos();
     }
 
@@ -64,37 +72,6 @@ public class ListadoActivity extends AppCompatActivity {
         });
     }
 
-
-
-    public void enviarId() {
-        String dato = getIntent().getStringExtra("datoBuscado");
-
-        API.search(dato, new Callback<Resultado>() {
-
-
-            @Override
-            public void onResponse(Call<Resultado> call, Response<Resultado> response) {
-                if (response.isSuccessful()) {
-                    Resultado resultados = response.body();
-                    idPrimerProducto.setText(resultados.getResultados().get(0).getId());
-                    Intent i = new Intent(ListadoActivity.this, ResultadoActivity.class);
-                    i.putExtra("idProducto", idPrimerProducto.getText().toString());
-                    startActivity(i);
-
-                } else {
-                    Log.d("Error", String.valueOf(response.code()) + response.message());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Resultado> call, Throwable t) {
-                Log.e("Error", t.getMessage());
-            }
-
-
-        });
-
-    }
 
     private void configurarRecyclerView(List<Producto> productos) {
         RecyclerView.LayoutManager lm = new LinearLayoutManager(this);
