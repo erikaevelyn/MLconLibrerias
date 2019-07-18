@@ -17,8 +17,10 @@ import com.squareup.picasso.Picasso;
 import ar.edu.unlam.tp1.taller.erikrodriguez.mercadolibreapp.R;
 import ar.edu.unlam.tp1.taller.erikrodriguez.mercadolibreapp.Modelos.Producto;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
 import butterknife.BindView;
@@ -65,7 +67,11 @@ public class ProductosAdapter extends RecyclerView.Adapter<ProductosAdapter.View
             viewHolder.envioGratis.setVisibility(View.GONE);
         }
 
-        viewHolder.precio.setText("$ " + productoAMostrar.getPrecio());
+        NumberFormat formatoImporte = NumberFormat.getCurrencyInstance();
+        formatoImporte = NumberFormat.getCurrencyInstance(new Locale("es","AR"));
+
+        viewHolder.precio.setText(formatoImporte.format(productoAMostrar.getPrecio()));
+
 
         URLimagenPortada = productoAMostrar.getUrlImagenPortada();
         Picasso.with(context.getApplicationContext()).load(URLimagenPortada).placeholder(R.drawable.progress_animation)
