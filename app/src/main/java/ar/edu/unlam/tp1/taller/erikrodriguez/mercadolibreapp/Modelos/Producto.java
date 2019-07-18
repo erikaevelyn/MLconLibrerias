@@ -26,6 +26,15 @@ public class Producto {
     @SerializedName("pictures")
     private List<Imagen> imagenes;
 
+    @SerializedName("thumbnail")
+    private String UrlImagenPortada;
+
+    @SerializedName("accepts_mercadopago")
+    private boolean mercadoPago;
+
+    @SerializedName("shipping")
+    private  Envio envio;
+
     public String getId() {
         return id;
     }
@@ -79,5 +88,29 @@ public class Producto {
 
     public void setImagenes(List<Imagen> imagenes) {
         this.imagenes = imagenes;
+    }
+
+    public boolean isMercadoPago() {
+        return mercadoPago;
+    }
+
+    public void setMercadoPago(boolean mercadoPago) {
+        this.mercadoPago = mercadoPago;
+    }
+
+    public Envio getEnvio() {
+        return envio;
+    }
+
+    public void setEnvio(Envio envio) {
+        this.envio = envio;
+    }
+
+    public String getUrlImagenPortada() {
+        return UrlImagenPortada;
+    }
+
+    public void setUrlImagenPortada(String urlImagenPortada) {
+        UrlImagenPortada = urlImagenPortada;
     }
 }

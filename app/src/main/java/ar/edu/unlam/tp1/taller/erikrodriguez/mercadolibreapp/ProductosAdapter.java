@@ -47,8 +47,14 @@ public class ProductosAdapter extends RecyclerView.Adapter<ProductosAdapter.View
         Producto productoAMostrar = this.productos.get(position);
 
         viewHolder.titulo.setText(productoAMostrar.getTitle());
-        viewHolder.precio.setText("$ " + productoAMostrar.getPrecio());
 
+        if(productoAMostrar.getEnvio().isEnvioGratis() == true) {
+            viewHolder.envioGratis.setText("Envio gratis");
+        }else{
+            viewHolder.envioGratis.setVisibility(View.GONE);;
+        }
+
+        viewHolder.precio.setText("$ " + productoAMostrar.getPrecio());
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,6 +94,9 @@ public class ProductosAdapter extends RecyclerView.Adapter<ProductosAdapter.View
 
         @BindView(R.id.precio)
         TextView precio;
+
+        @BindView(R.id.envioGratis)
+        TextView envioGratis;
 
         TextView idProducto;
 
