@@ -32,6 +32,24 @@
                 android:background="#fff"
                 />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/productoerror"
+                android:text="Verifique su conexion a internet."
+                android:layout_below="@+id/banner"
+                android:paddingTop="20sp"
+                android:gravity="center_horizontal"
+                android:visibility="invisible"/>
+
+            <ProgressBar
+                android:id="@+id/loading"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="250dp"
+                android:layout_centerHorizontal="true"
+                android:visibility="invisible"/>
 
 
             <TextView
@@ -44,7 +62,7 @@
                 android:background="#111111"
                 android:fontFamily="sans-serif-condensed-medium"
                 android:padding="5dp"
-                android:text="10 Fotos"
+                android:text="Cargando..."
                 android:textColor="#fff"></TextView>
 
             <TextView
@@ -95,11 +113,35 @@
                 android:textSize="35dp"
                 android:textStyle="bold"></TextView>
 
+            <ImageView
+                android:id="@+id/logoUbicacion"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/precio"/>
+
+            <TextView
+                android:id="@+id/ubicacion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/logoUbicacion"
+                android:layout_toRightOf="@+id/logoUbicacion"
+                android:layout_marginTop="10dp"
+                android:text="Cargando..."
+                android:textSize="20dp"
+                android:layout_marginBottom="10dp"></TextView>
+
+
+
+
             <TextView
                 android:id="@+id/envio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/precio"
+                android:layout_below="@+id/logoUbicacion"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:text="Cargando..."

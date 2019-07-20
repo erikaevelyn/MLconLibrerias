@@ -35,6 +35,9 @@ public class Producto {
     @SerializedName("shipping")
     private  Envio envio;
 
+    @SerializedName("seller_address")
+    private  DireccionVenta direccionVenta;
+
     public String getId() {
         return id;
     }
@@ -112,5 +115,13 @@ public class Producto {
 
     public void setUrlImagenPortada(String urlImagenPortada) {
         UrlImagenPortada = urlImagenPortada;
+    }
+
+    public DireccionVenta getDireccionVenta() {
+        return direccionVenta;
+    }
+
+    public void setDireccionVenta(DireccionVenta direccionVenta) {
+        this.direccionVenta = direccionVenta;
     }
 }

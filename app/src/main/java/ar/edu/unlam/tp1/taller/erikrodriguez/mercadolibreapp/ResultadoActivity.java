@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -15,6 +16,7 @@ import java.util.Locale;
 
 import ar.edu.unlam.tp1.taller.erikrodriguez.mercadolibreapp.API.API;
 import ar.edu.unlam.tp1.taller.erikrodriguez.mercadolibreapp.API.IMercadoLibre;
+import ar.edu.unlam.tp1.taller.erikrodriguez.mercadolibreapp.Modelos.Localidad;
 import ar.edu.unlam.tp1.taller.erikrodriguez.mercadolibreapp.Modelos.Producto;
 import ar.edu.unlam.tp1.taller.erikrodriguez.mercadolibreapp.Modelos.Resultado;
 import butterknife.BindView;
@@ -50,8 +52,24 @@ public class ResultadoActivity extends AppCompatActivity {
     @BindView(R.id.mercadoPago)
     ImageView mercadoPago;
 
+    @BindView(R.id.logoUbicacion)
+    ImageView logoUbicacion;
+
     @BindView(R.id.envio)
     TextView envio;
+
+    @BindView(R.id.ubicacion)
+    TextView ubicacion;
+
+    @BindView(R.id.cantidadFotos)
+    TextView cantidadFotos;
+
+    @BindView(R.id.loading)
+    ProgressBar loading;
+
+    @BindView(R.id.productoerror)
+    TextView productoerror;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +77,7 @@ public class ResultadoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_resultado);
         ButterKnife.bind(this);
         Picasso.with(getApplicationContext()).load(URLbanner).placeholder(R.drawable.progress_animation).into(imagenBanner);
+        Picasso.with(getApplicationContext()).load(R.drawable.logoubicacion).placeholder(R.drawable.progress_animation).into(logoUbicacion);
         mostrarResultado();
 
     }
@@ -102,18 +121,51 @@ public class ResultadoActivity extends AppCompatActivity {
                     }else{
                         envio.setText("Envio por $179,50");
                     }
-                }else{
-                    Log.d("Error", String.valueOf(response.code()) + response.message());
+
+                    ubicacion.setText(producto.getDireccionVenta().getLocalidad().getNombreLocalidad() + " - " + producto.getDireccionVenta().getPartido().getNombrePartido());
+                    cantidadFotos.setText(String.valueOf(producto.getImagenes().size()) + " Fotos");
+                } else {
+                    productoerror.setVisibility(View.VISIBLE);
+                    loading.setVisibility(View.VISIBLE);
+                    switch (response.code()){
+                        case 401:
+                            productoerror.setText("Unauthorized4: La autentificación es posible pero ha fallado o aún no ha sido provista.");
+                            break;
+                        case 404:
+                            productoerror.setText("404 Not Found: Recurso no encontrado.");
+                            break;
+                        case 405:
+                            productoerror.setText("405 Method Not Allowed:Una petición fue hecha a una URI utilizando un método de solicitud no soportado por dicha URI.");
+                            break;
+                        case 500:
+                            productoerror.setText("500 Internal Server Error.");
+                            break;
+                        case 501:
+                            productoerror.setText("501 Not Implemented: El servidor no soporta una funcionalidad necesaria para responder a la solicitud del navegador.");
+                            break;
+                        case 503:
+                            productoerror.setText("503 Service Unavailable: El servidor no puede responder a la petición del navegador porque está congestionado o está realizando tareas de mantenimiento.");
+                            break;
+                        case 504:
+                            productoerror.setText("504 Gateway Timeout: El servidor está actuando de proxy o gateway y no ha recibido a tiempo una respuesta del otro servidor, por lo que no puede responder adecuadamente a la petición del navegador.");
+                            break;
+                        case 505:
+                            productoerror.setText("505 HTTP Version Not Supported: El servidor no soporta la versión del protocolo HTTP utilizada en la petición del navegador.");
+                            break;
+                        default:
+                            productoerror.setText("Se produjo un error.");
+                            break;
+                    }
                 }
+
 
             }
 
-
-                    @Override
+            @Override
             public void onFailure(Call<Producto> call, Throwable t) {
-
-                Log.e("Error", t.getMessage());
-
+                productoerror.setVisibility(View.VISIBLE);
+                loading.setVisibility(View.VISIBLE);
+                productoerror.setText("Asegúrate de que tu dispositivo está conectado a la red y de que la fecha y hora están configuradas correctamente.");
             }
         });
 

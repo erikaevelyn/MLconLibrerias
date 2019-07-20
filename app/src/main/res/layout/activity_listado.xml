@@ -27,6 +27,25 @@
             android:ems="15"
             android:hint="Cargando..." />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/productoerror"
+            android:text="Verifique su conexion a internet."
+            android:layout_below="@+id/loQueSeBusco"
+            android:paddingTop="20sp"
+            android:gravity="center_horizontal"
+            android:visibility="invisible"/>
+
+        <ProgressBar
+            android:id="@+id/loading"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="250dp"
+            android:layout_centerHorizontal="true"
+            android:visibility="invisible"/>
+
 
 
         <android.support.v7.widget.RecyclerView
